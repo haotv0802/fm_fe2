@@ -4,16 +4,15 @@ import App from './app/App.jsx';
 import Home from "./app/Home.jsx";
 import About from "./app/About.jsx";
 import Contact from "./app/Contact.jsx";
-import { Router, Route, Link, browserHistory, IndexRoute, hashHistory } from 'react-router';
+import { HashRouter, Route, Switch } from 'react-router-dom'
 
 ReactDOM.render((
-  <Router history = {browserHistory}>
-    <Route path = "/" component = {App}>
-      <IndexRoute component = {Home} />
-      <Route path = "home" component = {Home} />
-      <Route path = "about" component = {About} />
-      <Route path = "contact" component = {Contact} />
-    </Route>
-  </Router>
-
+  <HashRouter>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/about" component={About} />
+      <Route exact path="/contact" component={Contact} />
+    </Switch>
+  </HashRouter>
 ), document.getElementById('app'))
