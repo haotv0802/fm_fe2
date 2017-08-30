@@ -1,69 +1,19 @@
 import React from 'react';
+import {browserHistory, IndexRoute, Link} from 'react-router'
 
 class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      data:
-        [
-          {
-            "id":1,
-            "name":"Foo",
-            "age":"20"
-          },
-
-          {
-            "id":2,
-            "name":"Bar",
-            "age":"30"
-          },
-
-          {
-            "id":3,
-            "name":"Baz",
-            "age":"40"
-          }
-        ]
-    }
-  }
-
   render() {
     return (
       <div>
-        <h1>{this.props.headerProp}</h1>
-        <h2>{this.props.contentProp}</h2>
-        <Header/>
-        <table>
-          <tbody>
-          {this.state.data.map((person, i) => <TableRow key = {i}
-                                                        data = {person} />)}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
+        <ul>
+          <li><Link to = "/home">Home</Link></li>
+          <li><Link to = "/about">About</Link></li>
+          <li><Link to = "/contact">Contact</Link></li>
+        </ul>
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Header</h1>
+        {this.props.children}
       </div>
-    );
-  }
-}
-
-class TableRow extends React.Component {
-  render() {
-    return (
-      <tr>
-        <td>{this.props.data.id}</td>
-        <td>{this.props.data.name}</td>
-        <td>{this.props.data.age}</td>
-      </tr>
-    );
+    )
   }
 }
 
