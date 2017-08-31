@@ -1,6 +1,7 @@
 import React from 'react';
+import styles from './Star.css';
 
-class Star extends React.Component{
+class Star extends React.Component {
   render() {
     return (
       <div className="col-md-5">
