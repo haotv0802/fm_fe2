@@ -1,14 +1,13 @@
 import React from 'react';
+import Card from './Card.jsx';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        Hello World!!!
-        Hello Hao
+        <Card />
       </div>
     );
   }
 }
-
 export default App;
