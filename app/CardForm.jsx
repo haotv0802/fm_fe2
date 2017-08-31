@@ -4,7 +4,8 @@ class CardForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username : 'user name ....'
+      username : 'user name ....',
+      age: 20
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -14,6 +15,7 @@ class CardForm extends React.Component {
     event.preventDefault;
     console.log("submit clicked.");
     console.log(this.state.username);
+    console.log(this.state.age);
   }
 
   handleOnChange(event) {
