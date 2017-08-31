@@ -7,9 +7,9 @@ class Card extends React.Component{
         <img src="http://placehold.it/75"/>
         <div style={{display: 'inline-block', marginLeft: 10}}>
           <div style={{fontSize: '1.25em', fontWeight: 'bold'}}>
-            Name here...
+            {this.props.name}
           </div>
-          <div>Company Name here...</div>
+          <div>{this.props.company}</div>
         </div>
       </div>
     )
