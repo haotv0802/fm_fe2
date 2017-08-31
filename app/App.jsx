@@ -20,12 +20,21 @@ class App extends React.Component {
         }
       ]
     };
+    this.addNewCard = this.addNewCard.bind(this);
+  }
+
+  addNewCard(cardInfo) {
+    console.log("In addNewCard function");
+    console.log(cardInfo);
+    this.setState(prevState => ({
+      cards: prevState.cards.concat(cardInfo)
+    }))
   }
 
   render() {
     return (
       <div>
-        <CardForm />
+        <CardForm onSubmit={this.addNewCard} />
         <br/>
         <CardList cards={this.state.cards}/>
       </div>

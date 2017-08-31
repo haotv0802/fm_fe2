@@ -20,6 +20,7 @@ class CardForm extends React.Component {
     Axios.get(`https://api.github.com/users/${this.state.username}`).then
     (resp => {
       console.log(resp);
+      this.props.onSubmit(resp.data);
     });
   }
 
