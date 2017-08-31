@@ -3,7 +3,11 @@ import React from 'react';
 class Star extends React.Component{
   render() {
     return (
-      <div>
+      <div className="col-md-5">
+        <i className="fa fa-star"></i>
+        <i className="fa fa-star"></i>
+        <i className="fa fa-star"></i>
+        <i className="fa fa-star"></i>
         <i className="fa fa-star"></i>
       </div>
     )
