@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card.jsx';
+import CardList from './CardList.jsx';
 let data = [
   {
     name: "Paul O'Shannessy",
@@ -18,11 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Card
-          name="Paul O'Shannessy"
-          avatar_url="https://avatars.githubusercontent.com/u/8445?v3"
-          company="Facebook"
-        />
+        <CardList />
       </div>
     );
   }
