@@ -5,11 +5,7 @@ class CardList extends React.Component {
   render() {
     return (
       <div>
-        <Card
-          name="Paul O'Shannessy"
-          avatar_url="https://avatars.githubusercontent.com/u/8445?v3"
-          company="Facebook"
-        />
+        {this.props.cards.map((card, i) => <Card key={i} {...card} />)}
       </div>
     )
   }
