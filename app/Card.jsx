@@ -6,9 +6,10 @@ class Card extends React.Component{
       <div>
         <img src="http://placehold.it/75"/>
         <div style={{display: 'inline-block', marginLeft: 10}}>
-          <div>
+          <div style={{fontSize: '1.25em', fontWeight: 'bold'}}>
             Name here...
           </div>
+          <div>Company Name here...</div>
         </div>
       </div>
     )
