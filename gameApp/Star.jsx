@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Star.css';
 
 class Star extends React.Component {
   render() {

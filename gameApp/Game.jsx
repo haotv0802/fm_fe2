@@ -3,6 +3,7 @@ import Star from './Star.jsx';
 import Button from './Button.jsx';
 import Answer from './Answer.jsx';
 import Number from './Number.jsx';
+import styles from './Game.css';
 
 class Game extends React.Component {
   render() {
