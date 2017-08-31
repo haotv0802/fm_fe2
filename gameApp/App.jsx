@@ -1,5 +1,8 @@
 import React from 'react';
 import Game from './Game.jsx';
+import Star from './Star.jsx';
+import Button from './Button.jsx';
+import Answer from './Answer.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +27,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Game />
+        <Game/>
+        <Star/>
+        <Button/>
+        <Answer/>
       </div>
     );
   }
