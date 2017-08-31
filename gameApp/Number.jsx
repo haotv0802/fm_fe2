@@ -1,13 +1,16 @@
 import React from 'react';
 
-class Number extends React.Component{
+class Number extends React.Component {
   render() {
+    const arrayOfNumbers = 9;
+    let numbers = [];
+    for (let i = 0; i < arrayOfNumbers; i++) {
+      numbers.push(<span key={i} className="">{i}</span>)
+    }
     return (
       <div className="card text-center">
         <div>
-          <span>1</span>
-          <span className="selected">2</span>
-          <span className="used">3</span>
+          {numbers}
         </div>
       </div>
     )
