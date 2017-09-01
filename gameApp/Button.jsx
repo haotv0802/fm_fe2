@@ -4,7 +4,7 @@ class Button extends React.Component{
   render() {
     return (
       <div className="col-md-2">
-        <button>=</button>
+        <button className="btn" disabled={this.props.selectedNumbers.length === 0}>=</button>
       </div>
     )
   }

@@ -9,7 +9,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedNumbers: [2, 4],
+      selectedNumbers: [],
       randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
     };
     this.selectNumber = this.selectNumber.bind(this);
@@ -32,18 +32,19 @@ class Game extends React.Component {
   }
 
   render() {
+    const {randomNumberOfStars, selectedNumbers} = this.state;
     return (
       <div className="container" style={{width: '800px'}}>
         <h3>Play Nine</h3>
         <hr/>
         <div className="row" style={{width: '800px'}}>
-          <Star numberOfStars={this.state.randomNumberOfStars}/>
-          <Button/>
-          <Answer selectedNumbers={this.state.selectedNumbers}
+          <Star numberOfStars={randomNumberOfStars}/>
+          <Button selectedNumbers={selectedNumbers}/>
+          <Answer selectedNumbers={selectedNumbers}
                   unselectNumber={this.unselectNumber}  />
         </div>
         <br />
-        <Number selectedNumbers={this.state.selectedNumbers} selectNumber = {this.selectNumber}/>
+        <Number selectedNumbers={selectedNumbers} selectNumber = {this.selectNumber}/>
       </div>
     )
   }
