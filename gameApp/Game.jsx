@@ -26,7 +26,7 @@ class Game extends React.Component {
       randomNumberOfStars: Game.randomNumber(),
       answerIsCorrect: null,
       refreshTimes: 5,
-      doneStatus: '',
+      doneStatus: undefined,
       arrayOfNumbers: 9
     };
   }
@@ -39,6 +39,7 @@ class Game extends React.Component {
   static randomNumber() {
     return 1 + Math.floor(Math.random() * 9);
   }
+
   selectNumber(clickedNumber) {
     if (this.state.usedNumbers.indexOf(clickedNumber) >= 0 || this.state.selectedNumbers.indexOf(clickedNumber) >= 0) {
       return;
@@ -64,22 +65,35 @@ class Game extends React.Component {
   }
 
   acceptAnswer() {
+    console.log("randomNumberOfStars: " + this.state.randomNumberOfStars);
     this.setState(
       prevState => ({
         usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
         selectedNumbers: [],
         answerIsCorrect: null,
         randomNumberOfStars: Game.randomNumber()
-      })
-    );
-    this.updateStatus();
-  }
+      }), () => {
+        console.log("randomNumberOfStars: " + this.state.randomNumberOfStars);
+        console.log("doneStatus: " + this.state.doneStatus);
+        if (this.state.usedNumbers.length === this.state.arrayOfNumbers) {
+          this.state.doneStatus = 'Done Nice !';
+        }
+        let numbersArray = new Array(this.state.arrayOfNumbers);
+        console.log(numbersArray);
 
-  updateStatus() {
-    if (this.state.usedNumbers.length === this.state.arrayOfNumbers) {
-      this.state.doneStatus = 'Done Nice !';
-    }
-    // if (this.state.refreshTimes === 0 && this.state.arrayOfNumbers)
+        let isPossible = false;
+        for (let i = 1; i <= numbersArray.length; i++) {
+          if (this.state.usedNumbers.indexOf(i) >= 0) {
+            isPossible = true;
+            break;
+          }
+        }
+        if (!isPossible) {
+          this.state.doneStatus = 'Game Over!';
+        }
+        console.log("doneStatus: " + this.state.doneStatus);
+      }
+    );
   }
 
   refresh() {
