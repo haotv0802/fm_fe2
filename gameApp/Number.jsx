@@ -7,6 +7,9 @@ class Number extends React.Component {
   }
 
   getClassNameWithNumber(number) {
+    if (this.props.usedNumbers.indexOf(number) >= 0) {
+      return 'used';
+    }
     if (this.props.selectedNumbers.indexOf(number) >= 0) {
       return 'selected';
     }
@@ -17,7 +20,11 @@ class Number extends React.Component {
     let numbers = [];
     for (let i = 1; i <= arrayOfNumbers; i++) {
       numbers.push(
-        <span key={i} onClick={() => this.props.selectNumber(i)} className={this.getClassNameWithNumber(i)}>{i}</span>
+        <span key={i}
+              onClick={() => this.props.selectNumber(i)}
+              className={this.getClassNameWithNumber(i)}>
+          {i}
+        </span>
       )
     }
     return (
