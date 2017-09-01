@@ -17,8 +17,10 @@ class Number extends React.Component {
   render() {
     const arrayOfNumbers = 9;
     let numbers = [];
-    for (let i = 0; i < arrayOfNumbers; i++) {
-      numbers.push(<span key={i} className={this.getClassNameWithNumber(i)}>{i}</span>)
+    for (let i = 1; i <= arrayOfNumbers; i++) {
+      numbers.push(
+        <span key={i} onClick={() => this.props.selectNumber(i)} className={this.getClassNameWithNumber(i)}>{i}</span>
+      )
     }
     return (
       <div className="card text-center">

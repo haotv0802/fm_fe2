@@ -11,6 +11,13 @@ class Game extends React.Component {
     this.state = {
       selectedNumbers: [2, 4]
     };
+    this.selectNumber = this.selectNumber.bind(this);
+  }
+
+  selectNumber(number) {
+    this.setState(prevState => ({
+      selectedNumbers: prevState.selectedNumbers.concat(number)
+    }))
   }
 
   render() {
@@ -24,7 +31,7 @@ class Game extends React.Component {
           <Answer selectedNumbers={this.state.selectedNumbers}/>
         </div>
         <br />
-        <Number selectedNumbers={this.state.selectedNumbers}/>
+        <Number selectedNumbers={this.state.selectedNumbers} selectNumber = {this.selectNumber}/>
       </div>
     )
   }
