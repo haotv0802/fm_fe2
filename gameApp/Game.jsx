@@ -6,6 +6,13 @@ import Number from './Number.jsx';
 import styles from './Game.css';
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedNumbers: [2, 4]
+    };
+  }
+
   render() {
     return (
       <div className="container" style={{width: '800px'}}>
@@ -14,10 +21,10 @@ class Game extends React.Component {
         <div className="row" style={{width: '800px'}}>
           <Star/>
           <Button/>
-          <Answer/>
+          <Answer selectedNumbers={this.state.selectedNumbers}/>
         </div>
         <br />
-        <Number/>
+        <Number selectedNumbers={this.state.selectedNumbers}/>
       </div>
     )
   }
