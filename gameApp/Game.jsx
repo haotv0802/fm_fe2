@@ -9,7 +9,8 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedNumbers: [2, 4]
+      selectedNumbers: [2, 4],
+      randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
     };
     this.selectNumber = this.selectNumber.bind(this);
   }
@@ -19,8 +20,7 @@ class Game extends React.Component {
       return;
     }
     this.setState(prevState => ({
-      selectedNumbers: prevState.selectedNumbers.concat(clickedNumber),
-      randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
+      selectedNumbers: prevState.selectedNumbers.concat(clickedNumber)
     }))
   }
 
