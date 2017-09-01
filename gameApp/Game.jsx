@@ -58,16 +58,18 @@ class Game extends React.Component {
 
   refresh() {
     this.setState({
+      selectedNumbers: [],
+      answerIsCorrect: null,
       randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
     })
   }
   render() {
     const {randomNumberOfStars, selectedNumbers, answerIsCorrect, usedNumbers} = this.state;
     return (
-      <div className="container" style={{width: '800px'}}>
+      <div className="container" style={{width: '700px'}}>
         <h3>Play Nine</h3>
         <hr/>
-        <div className="row" style={{width: '800px'}}>
+        <div className="row" style={{height: '100px'}}>
           <Star numberOfStars={randomNumberOfStars}/>
           <Button selectedNumbers={selectedNumbers}
                   checkAnswer={this.checkAnswer}
@@ -79,9 +81,11 @@ class Game extends React.Component {
                   unselectNumber={this.unselectNumber}  />
         </div>
         <br />
+        <div className="row">
         <Number selectedNumbers={selectedNumbers}
                 usedNumbers={usedNumbers}
                 selectNumber = {this.selectNumber}/>
+        </div>
       </div>
     )
   }

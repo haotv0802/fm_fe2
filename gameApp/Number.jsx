@@ -28,7 +28,7 @@ class Number extends React.Component {
       )
     }
     return (
-      <div className="card text-center">
+      <div className="card text-center col-md-12">
         <div>
           {numbers}
         </div>
