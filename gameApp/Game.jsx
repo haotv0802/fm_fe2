@@ -11,8 +11,10 @@ class Game extends React.Component {
     this.state = {
       selectedNumbers: [],
       usedNumbers: [],
-      randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
-      answerIsCorrect: null
+      randomNumberOfStars: Game.randomNumber(),
+      answerIsCorrect: null,
+      refreshTimes: 5,
+      doneStatus: 'Game Over !'
     };
     this.selectNumber = this.selectNumber.bind(this);
     this.unselectNumber = this.unselectNumber.bind(this);
@@ -21,6 +23,9 @@ class Game extends React.Component {
     this.refresh = this.refresh.bind(this);
   }
 
+  static randomNumber() {
+    return 1 + Math.floor(Math.random() * 9);
+  }
   selectNumber(clickedNumber) {
     if (this.state.usedNumbers.indexOf(clickedNumber) >= 0 || this.state.selectedNumbers.indexOf(clickedNumber) >= 0) {
       return;
@@ -51,20 +56,24 @@ class Game extends React.Component {
         usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
         selectedNumbers: [],
         answerIsCorrect: null,
-        randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
+        randomNumberOfStars: Game.randomNumber()
       })
     );
   }
 
   refresh() {
-    this.setState({
+    if (this.state.refreshTimes === 0) {
+      return;
+    }
+    this.setState(prevState => ({
       selectedNumbers: [],
       answerIsCorrect: null,
-      randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
-    })
+      randomNumberOfStars: Game.randomNumber(),
+      refreshTimes: prevState.refreshTimes - 1
+    }))
   }
   render() {
-    const {randomNumberOfStars, selectedNumbers, answerIsCorrect, usedNumbers} = this.state;
+    const {randomNumberOfStars, selectedNumbers, answerIsCorrect, usedNumbers, refreshTimes} = this.state;
     return (
       <div className="container" style={{width: '700px'}}>
         <h3>Play Nine</h3>
@@ -76,6 +85,7 @@ class Game extends React.Component {
                   answerIsCorrect={answerIsCorrect}
                   acceptAnswer={this.acceptAnswer}
                   refresh={this.refresh}
+                  refreshTimes={refreshTimes}
           />
           <Answer selectedNumbers={selectedNumbers}
                   unselectNumber={this.unselectNumber}  />

@@ -21,8 +21,8 @@ class Button extends React.Component{
       <div className="col-md-2">
         {button}
         <br /><br />
-        <button className="btn btn-warning btn-sm" onClick={this.props.refresh}>
-          <i className="fa fa-refresh"></i>
+        <button className="btn btn-warning btn-sm" onClick={this.props.refresh} disabled={this.props.refreshTimes === 0}>
+          <i className="fa fa-refresh"> {this.props.refreshTimes}</i>
         </button>
       </div>
     )
