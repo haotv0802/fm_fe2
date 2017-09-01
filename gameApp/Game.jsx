@@ -15,7 +15,6 @@ class Game extends React.Component {
     this.checkAnswer = this.checkAnswer.bind(this);
     this.acceptAnswer = this.acceptAnswer.bind(this);
     this.refresh = this.refresh.bind(this);
-    this.updateStatus = this.updateStatus.bind(this);
     this.reset = this.reset.bind(this);
   }
 
