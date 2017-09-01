@@ -14,9 +14,13 @@ class Game extends React.Component {
     this.selectNumber = this.selectNumber.bind(this);
   }
 
-  selectNumber(number) {
+  selectNumber(clickedNumber) {
+    if (this.state.selectedNumbers.indexOf(clickedNumber) >= 0) {
+      return;
+    }
     this.setState(prevState => ({
-      selectedNumbers: prevState.selectedNumbers.concat(number)
+      selectedNumbers: prevState.selectedNumbers.concat(clickedNumber),
+      randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
     }))
   }
 
@@ -26,7 +30,7 @@ class Game extends React.Component {
         <h3>Play Nine</h3>
         <hr/>
         <div className="row" style={{width: '800px'}}>
-          <Star/>
+          <Star numberOfStars={this.state.randomNumberOfStars}/>
           <Button/>
           <Answer selectedNumbers={this.state.selectedNumbers}/>
         </div>

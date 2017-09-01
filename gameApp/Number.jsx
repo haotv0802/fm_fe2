@@ -9,8 +9,6 @@ class Number extends React.Component {
   getClassNameWithNumber(number) {
     if (this.props.selectedNumbers.indexOf(number) >= 0) {
       return 'selected';
-    } else {
-      return '';
     }
   }
 
