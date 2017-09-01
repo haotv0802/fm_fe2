@@ -18,10 +18,11 @@ class Game extends React.Component {
     this.unselectNumber = this.unselectNumber.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.acceptAnswer = this.acceptAnswer.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
 
   selectNumber(clickedNumber) {
-    if (this.state.usedNumbers.indexOf(clickedNumber) >= 0) {
+    if (this.state.usedNumbers.indexOf(clickedNumber) >= 0 || this.state.selectedNumbers.indexOf(clickedNumber) >= 0) {
       return;
     }
     this.setState(prevState => ({
@@ -49,9 +50,16 @@ class Game extends React.Component {
       prevState => ({
         usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
         selectedNumbers: [],
+        answerIsCorrect: null,
         randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
       })
     );
+  }
+
+  refresh() {
+    this.setState({
+      randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
+    })
   }
   render() {
     const {randomNumberOfStars, selectedNumbers, answerIsCorrect, usedNumbers} = this.state;
@@ -65,6 +73,7 @@ class Game extends React.Component {
                   checkAnswer={this.checkAnswer}
                   answerIsCorrect={answerIsCorrect}
                   acceptAnswer={this.acceptAnswer}
+                  refresh={this.refresh}
           />
           <Answer selectedNumbers={selectedNumbers}
                   unselectNumber={this.unselectNumber}  />

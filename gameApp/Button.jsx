@@ -6,10 +6,7 @@ class Button extends React.Component{
     switch (this.props.answerIsCorrect) {
       case true:
         button =
-          <span>
-            <button className="btn btn-success"><i className="fa fa-check"></i></button>
-            <button onClick={this.props.acceptAnswer} className="btn">Accept Answer</button>
-          </span>
+          <button className="btn btn-success" onClick={this.props.acceptAnswer}><i className="fa fa-check"></i></button>
         break;
       case false:
         button =
@@ -23,6 +20,10 @@ class Button extends React.Component{
     return (
       <div className="col-md-2">
         {button}
+        <br /><br />
+        <button className="btn btn-warning btn-sm" onClick={this.props.refresh}>
+          <i className="fa fa-refresh"></i>
+        </button>
       </div>
     )
   }
