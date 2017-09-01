@@ -16,9 +16,8 @@ class Number extends React.Component {
   }
 
   render() {
-    const arrayOfNumbers = 9;
     let numbers = [];
-    for (let i = 1; i <= arrayOfNumbers; i++) {
+    for (let i = 1; i <= this.props.arrayOfNumbers; i++) {
       numbers.push(
         <span key={i}
               onClick={() => this.props.selectNumber(i)}
