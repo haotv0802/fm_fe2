@@ -13,6 +13,7 @@ class Game extends React.Component {
       randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
     };
     this.selectNumber = this.selectNumber.bind(this);
+    this.unselectNumber = this.unselectNumber.bind(this);
   }
 
   selectNumber(clickedNumber) {
@@ -24,6 +25,12 @@ class Game extends React.Component {
     }))
   }
 
+  unselectNumber(clickedNumber) {
+    this.setState(prevState => ({
+      selectedNumbers: prevState.selectedNumbers.filter(number => number != clickedNumber)
+    }));
+  }
+
   render() {
     return (
       <div className="container" style={{width: '800px'}}>
@@ -32,7 +39,8 @@ class Game extends React.Component {
         <div className="row" style={{width: '800px'}}>
           <Star numberOfStars={this.state.randomNumberOfStars}/>
           <Button/>
-          <Answer selectedNumbers={this.state.selectedNumbers}/>
+          <Answer selectedNumbers={this.state.selectedNumbers}
+                  unselectNumber={this.unselectNumber}  />
         </div>
         <br />
         <Number selectedNumbers={this.state.selectedNumbers} selectNumber = {this.selectNumber}/>
